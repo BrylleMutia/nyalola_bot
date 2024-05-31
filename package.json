@@ -1,0 +1,23 @@
+{
+   "name": "nyalola-bot",
+   "version": "1.0.0",
+   "description": "nyalola bot for telegram chat",
+   "main": "index.js",
+   "scripts": {
+      "build": "rimraf dist && tsc",
+      "prestart": "npm run build",
+      "start": "node dist/server.js",
+      "dev": "tsx watch ./src/server.ts"
+   },
+   "author": "Brylle Mutia",
+   "license": "ISC",
+   "dependencies": {
+      "dotenv": "^16.4.5",
+      "node-telegram-bot-api": "^0.66.0",
+      "rimraf": "^5.0.7",
+      "tsx": "^4.11.0"
+   },
+   "devDependencies": {
+      "@types/node-telegram-bot-api": "^0.64.6"
+   }
+}
