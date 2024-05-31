@@ -1,13 +1,10 @@
 import TelegramBot from "node-telegram-bot-api";
-import { OpenAI, Document, VectorStoreIndex, Settings } from "llamaindex";
 import { VertexAI } from "@google-cloud/vertexai";
 
 import dotenv from "dotenv";
 
 dotenv.config();
 
-// initialize llm configuration
-Settings.llm = new OpenAI({ model: "gpt-4", temperature: 0 });
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, {
    polling: true,
