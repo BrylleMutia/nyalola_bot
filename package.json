@@ -3,6 +3,7 @@
    "version": "1.0.0",
    "description": "nyalola bot for telegram chat",
    "main": "index.js",
+   "type": "module",
    "scripts": {
       "build": "rimraf dist && tsc",
       "prestart": "npm run build",
@@ -12,7 +13,9 @@
    "author": "Brylle Mutia",
    "license": "ISC",
    "dependencies": {
+      "@google-cloud/vertexai": "^1.2.0",
       "dotenv": "^16.4.5",
+      "llamaindex": "^0.3.14",
       "node-telegram-bot-api": "^0.66.0",
       "rimraf": "^5.0.7",
       "tsx": "^4.11.0"
