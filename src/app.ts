@@ -7,6 +7,13 @@ dotenv.config();
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, {
    polling: true,
+   request: {
+      url: "https://api.telegram.org",
+      agentOptions: {
+         keepAlive: true,
+         family: 4,
+      },
+   },
 });
 
 // Matches "/echo [whatever]"
