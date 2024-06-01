@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN!, {
    polling: true,
 });
@@ -63,35 +62,8 @@ bot.onText(/\/c (.+)/, async (msg, match) => {
    });
 });
 
-bot.onText(/\/talk (.+)/, async (msg, match) => {
-   const prompt = match[1]; // the captured "whatever"
-
-   const vertexAI = new VertexAI({
-      project: "avian-chariot-425011-t3",
-      location: "us-central1",
-   });
-
-   const generativeModel = vertexAI.getGenerativeModel({
-      model: "gemini-1.5-flash-001",
-      systemInstruction: {
-         role: "assistant",
-         parts: [
-            {
-               text: "You are a helpful, friendly, and cute companion that acts like a 7-year old child.",
-            },
-            {
-               text: "You should be expressive with your own thoughts, and funny at the same time.",
-            },
-         ],
-      },
-   });
-
-   const resp = await generativeModel.generateContent(prompt);
-   const contentResponse = resp.response;
-   console.log(JSON.stringify(contentResponse));
-
-   const chatId = msg.chat.id;
-
-   // send back the matched "whatever" to the chat
-   bot.sendMessage(chatId, JSON.stringify(contentResponse));
-});
+// setup GCloud service account
+// activate service account: gcloud auth activate-service-account render-nyalola-bot@avian-chariot-425011-t3.iam.gserviceaccount.com --key-file=./credentials.json
+// download credentials.json file from GCloud
+// add secret file on Render with contents from credentials.json
+// add env key GOOGLE_APPLICATION_CREDENTIALS = /etc/secrets/credentials.json
